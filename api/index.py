@@ -1,10 +1,19 @@
-from http.server import BaseHTTPRequestHandler
+import os
+import json
 
-class handler(BaseHTTPRequestHandler):
+def handler(event, context):
+  """Vercel serverless function handler."""
 
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-type','text/plain')
-        self.end_headers()
-        self.wfile.write('Hello, world!'.encode('utf-8'))
-        return
+  # Get the event data from the request body.
+  event_data = json.loads(event['body'])
+
+  # Do something with the event data.
+  print(event_data)
+
+  # Return a response to the client.
+  response = {
+    'statusCode': 200,
+    'body': json.dumps({'message': 'Hello, world!'})
+  }
+
+  return response
