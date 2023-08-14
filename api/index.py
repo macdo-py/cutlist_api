@@ -1,5 +1,5 @@
 import os
-import json
+#import json
 
 def handler(event, context):
   """Vercel serverless function handler."""
