@@ -16,5 +16,5 @@ async def fibonacci_ratio_handler(request, n):
     ratio = fibonacci_ratio(n)
     return json({'ratio': ratio})
 
-#if __name__ == '__main__':
-#    app.run(host='0.0.0.0', port=8000)x
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
