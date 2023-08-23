@@ -9,8 +9,9 @@ def fibonacci_ratio(n):
     elif n == 1:
         return 1
     else:
-        return fibonacci_ratio(n-1) / fibonacci_ratio(n-2)
-
+        #return fibonacci_ratio(n-1) / fibonacci_ratio(n-2)
+        return n-1
+        
 @app.route('/fibonacci-ratio/<n:int>')
 async def fibonacci_ratio_handler(request, n):
     ratio = fibonacci_ratio(n)
