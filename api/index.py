@@ -1,25 +1,10 @@
-from sanic import Sanic
-from sanic.response import json
+from flask import Flask, request, jsonify
 from ortools.linear_solver import pywraplp
 
-app = Sanic(__name__)
-
-def fibonacci_ratio(n):
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        #return fibonacci_ratio(n-1) / fibonacci_ratio(n-2)
-        return n-1
-        
-@app.route('/fibonacci-ratio/<n:int>')
-async def fibonacci_ratio_handler(request, n):
-    ratio = fibonacci_ratio(n)
-    return json({'ratio': ratio})
+app = Flask(__name__)
 
 @app.route('/cutlist', methods=['POST'])
-async def cutlist_handler(request):
+def cutlist_handler():
     # Read the input data from the request body
     json_input = request.json
     data = {}
@@ -88,7 +73,8 @@ async def cutlist_handler(request):
         output['cuts'] = []
         output['message'] = 'The problem does not have an optimal solution.'
 
-    json_output = json(output)
+    json_output = jsonify(output)
+    print(json_output)
     return json_output
 
 if __name__ == '__main__':
