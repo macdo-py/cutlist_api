@@ -1,3 +1,5 @@
 {
-  "redirects": [{ "source": "/", "destination": "/api/index.py" }]
+  "routes": [
+    { "src": "/fibonacci-ratio/(.*)", "dest": "/api/index.py?n=$1" }
+  ]
 }
