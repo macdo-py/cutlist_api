@@ -1,5 +1,6 @@
 {
   "routes": [
-    { "src": "/fibonacci-ratio/(.*)", "dest": "/api/index.py?n=$1" }
+    { "src": "/fibonacci-ratio/(.*)", "dest": "/api/index.py?n=$1" },
+    { "src": "/cutlist", "dest": "/api/index.py" }
   ]
 }
