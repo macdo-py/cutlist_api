@@ -58,12 +58,14 @@ def cutlist_handler():
                 bin_weight = 0
                 for i in data['items']:
                     if x[i, j].solution_value() > 0:
-                        bin_items.append(data['weights'][i])
+                        #bin_items.append(data['weights'][i])
+                        bin_items.append({'lenght' : data['weights'][i]})
                         bin_weight += data['weights'][i]
                 if bin_items:
                     num_bins += 1
-                    cuts.append({'board': j+1, 'bcuts': bin_items, 'total_length': bin_weight})
-
+                    #cuts.append({'board': j+1, 'bcuts': bin_items, 'total_length': bin_weight})
+                    cuts.append({'board': j+1, 'bcuts': bin_items})
+                    
         output['BoardsNeeded'] = num_bins
         output['cuts'] = cuts
 
